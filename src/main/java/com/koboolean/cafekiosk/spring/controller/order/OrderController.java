@@ -1,6 +1,7 @@
 package com.koboolean.cafekiosk.spring.controller.order;
 
 import com.koboolean.cafekiosk.spring.controller.order.request.OrderCreateRequest;
+import com.koboolean.cafekiosk.spring.response.OrderResponse;
 import com.koboolean.cafekiosk.spring.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,8 +18,8 @@ public class OrderController {
 
 
     @PostMapping("/api/v1/orders/new")
-    public void createOrder(@RequestBody OrderCreateRequest request){
+    public OrderResponse createOrder(@RequestBody OrderCreateRequest request){
         LocalDateTime registeredDateTime = LocalDateTime.now();
-        orderService.createOrder(request, registeredDateTime);
+        return orderService.createOrder(request, registeredDateTime);
     }
 }
